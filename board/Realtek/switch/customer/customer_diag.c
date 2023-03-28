@@ -229,7 +229,7 @@ int32 rtk_dram_test(uint32 round, vu_long addr_start, vu_long addr_end)
 #define FLAG_PROTECT_CLEAR	0x02
 #define	FLAG_PROTECT_INVALID	0x03
 
-
+#if 0
 int32 rtk_flash_test(uint32 round, vu_long addr_start, vu_long addr_end)
 {
     uint32 i;
@@ -272,6 +272,7 @@ int32 rtk_flash_test(uint32 round, vu_long addr_start, vu_long addr_end)
 
     return 0;
 }
+
 
 int32 rtk_port_loopback_test(void)
 {
@@ -394,7 +395,7 @@ int32 rtk_port_loopback_test(void)
 test_end:
     return ret;
 }
-
+#endif
 
 void run_fc_test(unsigned int detectGPIO)
 {
@@ -421,6 +422,7 @@ void run_fc_test(unsigned int detectGPIO)
 
         while (1)
         {
+#if 0
             /**************************************************/
             /***************** All port loopback test **************/
             /**************************************************/
@@ -430,7 +432,7 @@ void run_fc_test(unsigned int detectGPIO)
             if (0 != ret_val_temp)
                 break;
             printf(" -------------[%s]\n",(0 == ret_val_temp)?"Pass":"Failed");
-
+#endif
             /**************************************************/
             /****************** System DRAM test ****************/
             /**************************************************/
@@ -440,7 +442,7 @@ void run_fc_test(unsigned int detectGPIO)
             if (0 != ret_val_temp)
                 break;
             printf(" -------------[%s]\n",(0 == ret_val_temp)?"Pass":"Failed");
-
+#if 0
             /**************************************************/
             /****************** System Flash test ****************/
             /**************************************************/
@@ -450,6 +452,7 @@ void run_fc_test(unsigned int detectGPIO)
             if (0 != ret_val_temp)
                 break;
             printf(" -------------[%s]\n",(0 == ret_val_temp)?"Pass":"Failed");
+#endif
         }
 
         printf("========= Factory Test End [Status: %s ]=========\n\n",(0==ret_val)?"PASS":"FAILED");

@@ -16,7 +16,7 @@ const dram_info_t dram_info_in_spare[SOC_NUM_DRAM_SPARE] = {
 	}, {
 		#include <DRAM_GEN2_GENERIC_DDR3_839x_AUTO.h>
 	}
-#elif CONFIG_GS1900v1
+#elif defined(CONFIG_GS1900v1) | defined(CONFIG_GS1920)
     {
         #include <DRAM_GEN2_NANYA_NT5CB64M16DP_839x_DEMO_100MHZ.h>
     }, {

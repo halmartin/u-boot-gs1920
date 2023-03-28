@@ -1,0 +1,25 @@
+PRODUCT_VERSION := V2.60
+PRODUCT_MINOR_VERSION := 2
+LOADER_VERSION := 2.0.1.8
+
+# NOTE: Please change the FIRMWARE_RELEASE_MODE according to following rules
+# For FCS (final release): MP
+# For CSO Datecode: EP, and remember to remove the FIRMWARE_EP_VERSION
+# For SVD (QA): EP
+FIRMWARE_RELEASE_MODE := MP
+PRODUCT_NAME	:= $(PRODUCT_VERSION).$(PRODUCT_MINOR_VERSION)
+
+# WARNING: This EP version should be assigned only for SVD(BN, N=1,2,3...)
+FIRMWARE_EP_VERSION	:=
+
+ifeq ($(FIRMWARE_RELEASE_MODE), MP)
+FIRMWARE_EP_VERSION	:=
+else
+PRODUCT_NAME		:= $(PRODUCT_NAME).$(FIRMWARE_EP_VERSION)
+endif
+
+export PRODUCT_VERSION
+export PRODUCT_MINOR_VERSION
+export FIRMWARE_RELEASE_MODE
+export FIRMWARE_EP_VERSION
+export PRODUCT_NAME

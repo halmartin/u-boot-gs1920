@@ -10,6 +10,8 @@ SECTIONS
     *(preloader.uc)
   }
 
+  /DISCARD/ : { *(.MIPS.abiflags) }  
+
   .sram (ALIGN((OTTO_SRAM_BASE + SIZEOF(.ucflash)), 4)) :
   AT(ALIGN((LOADADDR(.ucflash) + SIZEOF(.ucflash)), 4)) {
     __LDS_LIBSOC_O__(.text*)

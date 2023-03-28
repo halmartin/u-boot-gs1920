@@ -36,7 +36,7 @@
 /*
  * UART
  */
-#define CONFIG_BAUDRATE			115200
+#define CONFIG_BAUDRATE			9600
 /* This following instructs u-boot to disable UART when br_div@soc_t=0 */
 //#define CONFIG_FOLLOW_PLR_TO_DIS_UART
 #define CONFIG_SYS_BAUDRATE_TABLE { 9600, 19200, 38400, 57600, 115200 }
@@ -91,7 +91,9 @@
 #define CONFIG_SYS_PBSIZE  (CONFIG_SYS_CBSIZE + sizeof(CONFIG_SYS_PROMPT) + 16)
 #define CONFIG_SYS_MAXARGS 64          /* max number of command args */
 #define CONFIG_TIMESTAMP               /* Print image info with timestamp */
+#ifndef CONFIG_CMDLINE_EDITING
 #define CONFIG_CMDLINE_EDITING         /* add command line history */
+#endif
 #define CONFIG_SYS_CONSOLE_INFO_QUIET  /* don't print console @ startup*/
 
 /*
@@ -115,16 +117,34 @@
 #define CONFIG_SYS_NO_FLASH
 #define CONFIG_SYS_FLASH_BASE 0xb4000000
 #define CONFIG_ENV_IS_IN_SPI_FLASH
+#ifndef CONFIG_ENV_OFFSET
 #define CONFIG_ENV_OFFSET     0x40000
+#endif
+#ifndef CONFIG_ENV_SIZE
 #define CONFIG_ENV_SIZE       0x400   /* size of environment */
+#endif
+#ifndef CONFIG_ENV_SECT_SIZE
 #define CONFIG_ENV_SECT_SIZE  0x1000  /* size of one complete sector */
+#endif
 
-//#define CONFIG_BOOTCOMMAND ""
-//#define CONFIG_BOOTDELAY   5 /* autoboot after 5 seconds */
+#ifndef CONFIG_BOODCOMMAND
+#define CONFIG_BOOTCOMMAND ""
+#endif
+#ifndef CONFIG_BOOTDELAY
+#define CONFIG_BOOTDELAY   5 /* autoboot after 5 seconds */
+#endif
+#ifndef CONFIG_IPADDR
 #define CONFIG_IPADDR      192.168.1.3
+#endif
+#ifndef CONFIG_SERVERIP
 #define CONFIG_SERVERIP    192.168.1.7
+#endif
+#ifndef CONFIG_NETMASK
 #define CONFIG_NETMASK     255.255.255.0
+#endif
+#ifndef CONFIG_ETHADDR
 #define CONFIG_ETHADDR     00:E0:4C:86:70:01
+#endif
 
 #define CONFIG_ZERO_BOOTDELAY_CHECK
 

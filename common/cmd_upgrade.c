@@ -51,10 +51,12 @@
 #define DFLT_LOADER_FILENAME   "u-boot.bin"
 #define DFLT_ROM_FILENAME      "rom.bix"
 
+#if 0
 #ifdef CONFIG_DUAL_IMAGE
 #define ROM_SIZE (LOADER_SIZE + LOADER_BDINFO_SIZE + SYSINFO_SIZE + JFFS2_CFG_SIZE + JFFS2_LOG_SIZE + KERNEL_SIZE + KERNEL2_SIZE)
 #else
 #define ROM_SIZE (LOADER_SIZE + LOADER_BDINFO_SIZE + SYSINFO_SIZE + JFFS2_CFG_SIZE + JFFS2_LOG_SIZE + KERNEL_SIZE)
+#endif
 #endif
 
 #ifdef CONFIG_DUAL_IMAGE
@@ -408,6 +410,7 @@ int upgrade_runtime (char *filename, int partition)
     return ret;
 }
 
+#if 0
 int upgrade_rom (char *filename, int force)
 {
     int ret = 0;
@@ -459,7 +462,7 @@ int upgrade_rom (char *filename, int force)
 
     return ret;
 }
-
+#endif
 
 int do_upgrade (cmd_tbl_t *cmdtp, int flag, int argc, char * const argv[])
 {
@@ -509,6 +512,7 @@ int do_upgrade (cmd_tbl_t *cmdtp, int flag, int argc, char * const argv[])
 
             upgrade_runtime(filename, 1);
         }
+#if 0
         else if (0 == strcmp(argv[1], "rom"))
         {
             if (3 == argc)
@@ -527,6 +531,7 @@ int do_upgrade (cmd_tbl_t *cmdtp, int flag, int argc, char * const argv[])
 
             upgrade_rom(filename, 1);
         }
+#endif
         else
         {
             return cmd_usage(cmdtp);

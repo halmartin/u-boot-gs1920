@@ -54,7 +54,8 @@ comment 'Board Type Selection (for RAM and Flash)'
 
 choice 'Series' \
     "GS1900v1 CONFIG_GS1900v1 \
-     GS1900v2 CONFIG_GS1900v2" GS1900v2
+     GS1900v2 CONFIG_GS1900v2 \
+     GS1920 CONFIG_GS1920" GS1900v2
 
 endmenu
 #############################################################################
@@ -103,6 +104,7 @@ bool 'Select Customer Board' CONFIG_CUSTOMER_BOARD y
 if [ "$CONFIG_CUSTOMER_BOARD" = "y" -a "$CONFIG_RTL839XS" = "y" ]; then
     bool '  Zyxel GS-1900-48 board' CONFIG_ZYXEL_GS1810_48 y
     bool '  Zyxel GS-1900-48-HP board' CONFIG_ZYXEL_GS1810_48_HP y
+    bool '  Zyxel GS-1920-24HP board' CONFIG_ZYXEL_GS1920_24_HP y
 
 #    if [ "$CONFIG_ZYXEL_GS1810_48" = "y" ];then
 #		define_string CONFIG_BOARDMODEL "ZyXEL_GS1900_48"
@@ -241,7 +243,8 @@ if [ "$CONFIG_FLASH_SIZE_16MB" = "y" ]; then
 fi
 choice 'Flash Layout Type' " Type1 CONFIG_FLASH_LAYOUT_TYPE1 \
                              Type2 CONFIG_FLASH_LAYOUT_TYPE2 \
-                             Type3 CONFIG_FLASH_LAYOUT_TYPE3
+                             Type3 CONFIG_FLASH_LAYOUT_TYPE3 \
+                             GS1920 CONFIG_FLASH_LAYOUT_GS1920
                            " Type1
 if [ "$CONFIG_FLASH_LAYOUT_TYPE2" = "y"  -o "$CONFIG_FLASH_LAYOUT_TYPE3" = "y" ]; then
 	define_bool CONFIG_TURNKEY_SYSINFO y
@@ -266,7 +269,11 @@ if [ "$CONFIG_RTL839XS" = "y" ]; then
         define_int  CONFIG_CONS_INDEX 1
         define_bool CONFIG_SERIAL_SOFTWARE_FIFO n
 	define_int  CONFIG_SYS_SDRAM_BASE 0x80000000
-	define_hex  CONFIG_ENV_OFFSET 0x40000
+    if [ "$CONFIG_GS1920" = "y" ]; then
+        define_hex  CONFIG_ENV_OFFSET 0xd0000
+    else
+	    define_hex  CONFIG_ENV_OFFSET 0x40000
+	fi
 	define_string CONFIG_MTD_PARTITIONS "n"
         define_bool CONFIG_RTL8390 y
         define_bool CONFIG_ENV_OVERWRITE y

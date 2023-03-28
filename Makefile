@@ -37,7 +37,7 @@ CONFIG_LINUXDIR = linux-2.6.32.x
 endif
 
 ifndef LOADER_VERSION
-include ../version.mk
+include version.mk
 endif
 
 U_BOOT_VERSION = $(LOADER_VERSION)
@@ -650,6 +650,8 @@ menuconfig: clobber unconfig
 		mv $(SRCTREE)/autoconf.h $(SRCTREE)/include/configs/ ; \
 		if egrep "^CONFIG_GS1900v1=y" .config > /dev/null; then \
 			cp $(SRCTREE)/model_info/DRAM_CUSTOM_MODEL_for_839x_rackmount.h $(SRCTREE)/model_info/DRAM_CUSTOM_MODEL.h ;\
+		elif egrep "^CONFIG_GS1920=y" .config > /dev/null; then \
+			cp $(SRCTREE)/model_info/DRAM_CUSTOM_MODEL_for_839x_rackmount.h $(SRCTREE)/model_info/DRAM_CUSTOM_MODEL.h ;\
 		else \
 			cp $(SRCTREE)/model_info/DRAM_CUSTOM_MODEL_for_839x_v2.h $(SRCTREE)/model_info/DRAM_CUSTOM_MODEL.h ;\
 		fi; \
@@ -696,7 +698,6 @@ menuconfig: clobber unconfig
 		ln -snf $(SRCTREE)/arch/otto/cpu/rlx5281/rtl8696/rtk_soc/include/timer.h $(SRCTREE)/include/asm/arch-rtl8696/timer.h;\
 		ln -snf $(SRCTREE)/arch/otto/cpu/rlx5281/rtl8696/rtk_soc/include/idmem_dma.h $(SRCTREE)/include/asm/arch-rtl8696/idmem_dma.h;\
 	fi
-	@ln -snf $(SDKSYSDIR)/include/linux/mtd/rtk_flash_common.h $(SRCTREE)/board/Realtek/include/rtk_flash_common.h
 	@touch $(CONFIG_READY)
 
 $(VERSION_FILE):
@@ -950,7 +951,6 @@ rest_config:
 		$(MAKE) -C arch/mips/cpu/mips4kec/rtl838x preloader ; \
 		$(MAKE) -C ./arch/mips/lib plr_flash.c ; \
 	fi
-	@ln -snf $(SDKSYSDIR)/include/linux/mtd/rtk_flash_common.h $(SRCTREE)/board/Realtek/include/rtk_flash_common.h
 	@touch $(CONFIG_READY)
 
 .PHONY : config

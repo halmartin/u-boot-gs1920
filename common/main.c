@@ -58,7 +58,7 @@ DECLARE_GLOBAL_DATA_PTR;
 /*
  * Board-specific Platform code can reimplement show_boot_progress () if needed
  */
-void inline __show_boot_progress (int val) {}
+static void inline __show_boot_progress (int val) {}
 void show_boot_progress (int val) __attribute__((weak, alias("__show_boot_progress")));
 
 #if defined(CONFIG_UPDATE_TFTP)
@@ -515,23 +515,23 @@ void main_loop (void)
 	update_tftp (0UL);
 #endif /* CONFIG_UPDATE_TFTP */
 
-    _sysMacRange_generate();
+    //_sysMacRange_generate();
 
 #if defined(CONFIG_BOOTSYSINFO_PRINT)
     sysInfoEntry = NULL;
-    sysInfoEntry = getsys(SYSINFO_SERIALNUM_VARNAME);
+    //sysInfoEntry = getsys(SYSINFO_SERIALNUM_VARNAME);
     if(sysInfoEntry != NULL)
     {
         printf("SN:    %s\n",sysInfoEntry);
     }
 
     sysInfoEntry = NULL;
-    sysInfoEntry = getsys(SYSINFO_MAC_START_VARNAME);
+    //sysInfoEntry = getsys(SYSINFO_MAC_START_VARNAME);
     if(sysInfoEntry != NULL)
     {
         printf("MAC:   %s",sysInfoEntry);
         sysInfoEntry = NULL;
-        sysInfoEntry = getsys(SYSINFO_MAC_END_VARNAME);
+        //sysInfoEntry = getsys(SYSINFO_MAC_END_VARNAME);
         if(sysInfoEntry != NULL)
         {
             printf(" - %s",sysInfoEntry);

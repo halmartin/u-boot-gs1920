@@ -9,7 +9,7 @@ SECTIONS
     arch/mips/cpu/mips34kc/start.o(.text*)
     *(preloader.uc)
   }
-
+  /DISCARD/ : { *(.MIPS.abiflags) }
   .sram (OTTO_SRAM_BASE) :
   AT(ALIGN((LOADADDR(.ucflash) + SIZEOF(.ucflash)), 4)) {
     arch/mips/cpu/mips34kc/rtl839x/librtl839x.o(.text*)
