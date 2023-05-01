@@ -343,11 +343,11 @@
 	#undef FLASH_BASE
 	#define FLASH_BASE 0xb4000000
 	//#define FLASH_BASE 0xb0000000
-	#define LOADER_START        (0x000b0030U)                            	//0x000b0030 = BootExt
-	//#define LOADER_START		(0x00000000U)
-	#define LOADER_SIZE         (0x0002ffd0U)                            	//0x00030000
+	//#define LOADER_START        (0x000b0030U)                            	//0x000b0030 = BootExt
+	#define LOADER_START		(0x00000000U)
+	#define LOADER_SIZE         (0x0002dc00U)                            	//0x00030000
 	#define SYSINFO_START       (LOADER_START + LOADER_SIZE)                //0x000e0000 = MemMapT
-	#define SYSINFO_SIZE        (0x00002000U)                               //0x00002000
+	#define SYSINFO_SIZE        (0x00001000U)                               //0x00002000
 	#define LOADER_BDINFO_START (SYSINFO_START + SYSINFO_SIZE)              //0x000e2000 = termcap
 	#define LOADER_BDINFO_SIZE  (0x00000400U)                               //0x00000400
 //	#define JFFS2_START         (LOADER_BDINFO_START+LOADER_BDINFO_SIZE)    //0x000e0000
@@ -359,8 +359,8 @@
 	//    #define ROOTFS_START        (KERNEL_START+KERNEL_SIZE)              //0x001F0000
 	//    #define ROOTFS_SIZE         (UNIT_SIZE*33)                          //0x00210000
 	//#else /*for initramfs*/
-	#define KERNEL_START            (0x00162400U)
-	#define KERNEL_SIZE             (0x0064DC00U)
+	#define KERNEL_START            (0x00030000U)
+	#define KERNEL_SIZE             (0x00790000U)
 	//#define KERNEL_START            (0x00030000U)
 	//#define KERNEL_SIZE             (0x00700000U)
 //	    #define KERNEL_START        (JFFS2_START+JFFS2_SIZE)                //0x00090000
