@@ -954,27 +954,7 @@ static const rtk_switch_model_t zyxel_gs1920_24HP = {
     .chip = RTK_CHIP_RTL8392M,
 
     /* LED layout settting */
-    .led.led_if_sel = LED_IF_SEL_SINGLE_COLOR_SCAN,
-    .led.num = 1,
-    .led.copr_pmask[0] = 0xFFFFFFFF,
-    .led.copr_pmask[1] = 0x0000FFFF,
-    .led.fib_pmask[0] = 0x00000000,
-    .led.fib_pmask[1] = 0x000F0000,
-    .led.led_combo[0] = 0x00000000,
-    .led.led_combo[1] = 0x00000000,
-    /* LED definition - set 0 */
-    .led.led_definition_set[0].led[0] = 0x0,    /* link/act */
-    .led.led_definition_set[0].led[1] = 0xA,    /* 1000Mbps link/act */
-    .led.led_definition_set[0].led[2] = 0x6,    /* duplex mode */
-    /* LED definition selection (per-port) */
-    .led.led_copr_set_psel_bit0_pmask[0] = 0x00000000,
-    .led.led_copr_set_psel_bit1_pmask[0] = 0x00000000,
-    .led.led_copr_set_psel_bit0_pmask[1] = 0x00000000,
-    .led.led_copr_set_psel_bit1_pmask[1] = 0x00000000,
-    .led.led_fib_set_psel_bit0_pmask[0] = 0x00000000,
-    .led.led_fib_set_psel_bit1_pmask[0] = 0x00000000,
-    .led.led_fib_set_psel_bit0_pmask[1] = 0x00000000,
-    .led.led_fib_set_psel_bit1_pmask[1] = 0x00000000,
+    .led.led_if_sel = LED_IF_SEL_NONE,
 
     /* 24 + 4 Combo/SFP */
     .port.count = 24, // Actually, 28
@@ -1023,7 +1003,4 @@ static const rtk_switch_model_t zyxel_gs1920_24HP = {
         [1] = { .chip = RTK_CHIP_RTL8218B, .mac_id = 8 , .phy_max = 8 },
         [2] = { .chip = RTK_CHIP_RTL8218B, .mac_id = 16, .phy_max = 8 },
     },   /* .phy.list */
-    .phy.rstGpioType = PHY_RSTGPIOTYPE_EXTERNAL,
-    .phy.rstGpio.rstExtGpio.addr = 3,
-    .phy.rstGpio.rstExtGpio.pin = 6,
 };

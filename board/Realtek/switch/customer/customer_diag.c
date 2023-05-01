@@ -76,6 +76,7 @@ int32 is_ctrlc(void)
 	return 0;
 }
 
+#if defined(CONFIG_MDC_MDIO_EXT_SUPPORT)
 int32 rtk_rstDeft_detect(void)
 {
     uint32 delay1,delay2;
@@ -104,6 +105,7 @@ int32 rtk_rstDeft_detect(void)
 END:
     return ret;
 }
+#endif
 
 int32 rtk_dram_test(uint32 round, vu_long addr_start, vu_long addr_end)
 {
@@ -401,11 +403,13 @@ void run_fc_test(unsigned int detectGPIO)
 {
     uint32 htp_gpio_val_sum=0;
     int32 ret_val=0,ret_val_temp=0;
-
+    
+#if defined(CONFIG_MDC_MDIO_EXT_SUPPORT)
     rtk_rstDeftGpio_init();
 
     if (detectGPIO && 0 == rtk_htp_detect())
         return;
+#endif
 
     ret_val = 0;
     if(htp_gpio_val_sum < RTL8231_GPIO_VALUE_THRD)
@@ -417,9 +421,10 @@ void run_fc_test(unsigned int detectGPIO)
         /**************************************************/
         /****************** RST_TO_DEFAULT ***************/
         /**************************************************/
+#if defined(CONFIG_MDC_MDIO_EXT_SUPPORT)
         printf("--- Wait 10s to detect RST....[ctrl+c to skip] ---\n");
         ret_val |= rtk_rstDeft_detect();
-
+#endif
         while (1)
         {
 #if 0

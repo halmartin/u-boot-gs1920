@@ -3511,13 +3511,15 @@ void rtl8390_config(const rtk_switch_model_t *pModel)
 
     model_info = MEM32_READ(SWCORE_BASE_ADDR| RTL8390_MODEL_NAME_INFO_ADDR);
 
-    //OSAL_PRINTF("Model Info: %x\n", model_info);
+    OSAL_PRINTF("Model Info: %x\n", model_info);
 
     /*Internal GPIO init*/
+    DBG_PRINT(1, "### Internal GPIO Init ###\n");
     rtl8390_gpio_init();
 
     /*External GPIO init*/
     #if defined(CONFIG_MDC_MDIO_EXT_SUPPORT)
+    DBG_PRINT(1, "### Init RTL8231 ###\n");
     rtl8231_init();
     #endif
 

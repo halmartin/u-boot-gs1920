@@ -140,7 +140,7 @@ void chip_config(const rtk_switch_model_t *pModel)
         OSAL_PRINTF("Model: ZyXEL_GS1900_8HP\n");
     else
         OSAL_PRINTF("Model: %s\n", pModel->name);
-#if 0
+
     OSAL_PRINTF("Switch Chip: %s\n", \
         (pModel->chip == RTK_CHIP_RTL8328M)?  "RTL8328M" : \
         (pModel->chip == RTK_CHIP_RTL8328S)?  "RTL8328S" : \
@@ -155,7 +155,6 @@ void chip_config(const rtk_switch_model_t *pModel)
         (pModel->chip == RTK_CHIP_RTL8380M)?  "RTL8380M" : \
         (pModel->chip == RTK_CHIP_RTL8330M)?  "RTL8330M" : \
         "Unknown");
-#endif
 
     for (i=0; i<pModel->phy.count; i++)
     {
