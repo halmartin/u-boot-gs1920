@@ -270,7 +270,7 @@ if [ "$CONFIG_RTL839XS" = "y" ]; then
         define_bool CONFIG_SERIAL_SOFTWARE_FIFO n
 	define_int  CONFIG_SYS_SDRAM_BASE 0x80000000
     if [ "$CONFIG_GS1920" = "y" ]; then
-        define_hex  CONFIG_ENV_OFFSET 0xd0000
+        define_hex  CONFIG_ENV_OFFSET 0x2f000
     else
 	    define_hex  CONFIG_ENV_OFFSET 0x40000
 	fi
