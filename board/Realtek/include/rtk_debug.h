@@ -10,7 +10,7 @@
 /*
  * Symbol Definition
  */
-#define DBG_LEVEL   0   /*-1 means turning off debug*/
+#define DBG_LEVEL   1   /*-1 means turning off debug*/
 
 
 /*
