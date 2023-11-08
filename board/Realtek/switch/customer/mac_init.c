@@ -169,7 +169,8 @@ void customer_mac_misc_config_init(const rtk_switch_model_t *pModel)
     /*config combo port to fiber mode*/
     if((0 == strcmp(pModel->name, "ZyXEL_GS1900_24"))   ||
        (0 == strcmp(pModel->name, "ZyXEL_GS1900_24HP")) ||
-       (0 == strcmp(pModel->name, "ZyXEL_GS1900_24HPv2")))
+       (0 == strcmp(pModel->name, "ZyXEL_GS1900_24HPv2")) ||
+       (0 == strcmp(pModel->name, "ZyXEL_GS1920_24")))
     {
         val = MEM32_READ(0xbb00a000);
         val &= ~(0x3<<7);

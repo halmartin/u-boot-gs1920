@@ -105,6 +105,11 @@ if [ "$CONFIG_CUSTOMER_BOARD" = "y" -a "$CONFIG_RTL839XS" = "y" ]; then
     bool '  Zyxel GS-1900-48 board' CONFIG_ZYXEL_GS1810_48 y
     bool '  Zyxel GS-1900-48-HP board' CONFIG_ZYXEL_GS1810_48_HP y
     bool '  Zyxel GS-1920-24HP board' CONFIG_ZYXEL_GS1920_24_HP y
+    bool '  Zyxel GS-1920-24 board' CONFIG_ZYXEL_GS1920_24 y
+
+    if [ "$CONFIG_ZYXEL_GS1920_24" = "y" ];then
+        define_string CONFIG_BOARDMODEL "ZyXEL_GS1920_24"
+    fi
 
 #    if [ "$CONFIG_ZYXEL_GS1810_48" = "y" ];then
 #		define_string CONFIG_BOARDMODEL "ZyXEL_GS1900_48"
@@ -269,11 +274,7 @@ if [ "$CONFIG_RTL839XS" = "y" ]; then
         define_int  CONFIG_CONS_INDEX 1
         define_bool CONFIG_SERIAL_SOFTWARE_FIFO n
 	define_int  CONFIG_SYS_SDRAM_BASE 0x80000000
-    if [ "$CONFIG_GS1920" = "y" ]; then
-        define_hex  CONFIG_ENV_OFFSET 0xd0000
-    else
-	    define_hex  CONFIG_ENV_OFFSET 0x40000
-	fi
+	define_hex  CONFIG_ENV_OFFSET 0x40000
 	define_string CONFIG_MTD_PARTITIONS "n"
         define_bool CONFIG_RTL8390 y
         define_bool CONFIG_ENV_OVERWRITE y

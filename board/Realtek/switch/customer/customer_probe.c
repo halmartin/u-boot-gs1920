@@ -26,8 +26,8 @@
  */
 #define ENV_BOARD_MODEL     "boardmodel"
 
-#define CONFIG_BOARD_SEL_TYPE_CONFIG   0
-#define CONFIG_BOARD_SEL_TYPE_GPIO     1
+#define CONFIG_BOARD_SEL_TYPE_CONFIG   1
+#define CONFIG_BOARD_SEL_TYPE_GPIO     0
 
 /*
  * Data Declaration
@@ -53,6 +53,7 @@ const char* evn_boardModel[] = {
     "ZyXEL_GS1900_24EP",
     "ZyXEL_GS1900_24HPv2",
     "ZyXEL_GS1900_48HPv2",
+    "ZyXEL_GS1920_24",
 };
 
 extern int board_model_set(int modelId);
@@ -132,6 +133,14 @@ int customer_board_probe(rtk_switch_model_t **pSwitchModel)
     {
         gSwitchModel = &zyxel_gs1810_48;
         model = 6;
+    }
+    else
+#endif
+#if defined(CONFIG_ZYXEL_GS1920_24)
+    if (board_model && ((0 == strcmp(board_model, "ZyXEL_GS1920_24"))))
+    {
+        gSwitchModel = &zyxel_gs1920_24;
+        model = 13;
     }
     else
 #endif
@@ -291,6 +300,9 @@ int customer_board_probe(rtk_switch_model_t **pSwitchModel)
             break;
         case 0xC:
             gSwitchModel = &zyxel_gs1810_48HPv2;
+            break;
+        case 0xD:
+            gSwitchModel = &zyxel_gs1920_24;
             break;
         default:
             /* Not match customer board */

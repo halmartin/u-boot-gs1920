@@ -344,6 +344,7 @@
 	#define FLASH_BASE 0xb4000000
 	//#define FLASH_BASE 0xb0000000
 	#define LOADER_START        (0x000b0030U)                            	//0x000b0030 = BootExt
+        // is this expecting u-boot to be loaded by BootExt?
 	//#define LOADER_START		(0x00000000U)
 	#define LOADER_SIZE         (0x0002ffd0U)                            	//0x00030000
 	#define SYSINFO_START       (LOADER_START + LOADER_SIZE)                //0x000e0000 = MemMapT

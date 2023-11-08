@@ -316,6 +316,7 @@ int32 rtk_port_loopback_test(void)
         if((0 == strcmp(board_model, "ZyXEL_GS1900_24"))||
             (0 == strcmp(board_model, "ZyXEL_GS1900_24HP"))||
             (0 == strcmp(board_model, "ZyXEL_GS1900_24HPv2")))
+            (0 == strcmp(board_model, "ZyXEL_GS1920_24")))
         {
             if(port > 23)
                 break;
